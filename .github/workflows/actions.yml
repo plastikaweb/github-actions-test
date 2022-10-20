@@ -1,15 +1,26 @@
 name: Actions Workflow
 
 on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - '!feature/no-valid'
+    tags:
+      - v1.*
+    paths:
+      - '**.js'
+      - '!filename.js'
   # schedule:
   #  - cron: '0/5 * * * *'
   # - cron: '0/6 * * * *'
-  # push:
-  repository_dispatch:
-    types: [build]
 
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  # push:
+  # repository_dispatch:
+  #  types: [build]
+
+  # pull_request:
+  #  types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
